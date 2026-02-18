@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ft_garden_data.py                                  :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vguerra- <vguerra-@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/02/18 18:02:04 by vguerra-          #+#    #+#              #
+#    Updated: 2026/02/18 18:02:05 by vguerra-         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 class Plant:
     """represents a plant with a name, height, and age."""
 
@@ -7,11 +19,11 @@ class Plant:
         self.height = height
         self.age = age
 
-    def display_info(self):
+    def display_info(self) -> None:
         """Display formatted plant information."""
         print(f"{self.name}: {self.height}cm, {self.age}days old")
 
-def main():
+def main() -> None:
     """Creates and displays gardens log."""
     print("=== Garden Plant Registry ===")
     plants = [
