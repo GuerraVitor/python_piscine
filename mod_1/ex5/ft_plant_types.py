@@ -6,7 +6,7 @@
 #    By: vguerra- <vguerra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/20 11:12:18 by vguerra-          #+#    #+#              #
-#    Updated: 2026/02/20 13:40:37 by vguerra-         ###   ########.fr        #
+#    Updated: 2026/02/20 13:51:10 by vguerra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ class Flower(Plant):
 
     def bloom(self) -> None:
         """Announce that the flower is blooming."""
-        print(f"{self.name} is blooming beautifully!")
+        print(f"{self.name} is blooming beautifully!\n")
 
 
 class Tree(Plant):
@@ -48,7 +48,7 @@ class Tree(Plant):
     def produce_shade(self) -> None:
         """Announce how much shade the tree makes."""
         shade_area = self.trunk_diameter * 1.6
-        print(f"{self.name} provides {shade_area:.0f} square meters of shade")
+        print(f"{self.name} provides {shade_area:.0f} square meters of shade\n")
 
 
 class Vegetable(Plant):
@@ -69,12 +69,12 @@ class Vegetable(Plant):
 
     def display_nutrition(self) -> None:
         """Announce the vegetable's nutrition."""
-        print(f"{self.name} is rich in {self.nutritional_value}")
+        print(f"{self.name} is rich in {self.nutritional_value}\n")
 
 
 def main() -> None:
     """Show specialized plant data."""
-    print("=== Garden Plant Types ===")
+    print("=== Garden Plant Types ===\n")
 
     flowers = [
         Flower("Rose", 25, 30, "red"),
