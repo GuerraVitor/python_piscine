@@ -6,47 +6,84 @@
 #    By: vguerra- <vguerra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/20 10:40:50 by vguerra-          #+#    #+#              #
-#    Updated: 2026/02/20 11:10:34 by vguerra-         ###   ########.fr        #
+#    Updated: 2026/02/20 13:40:37 by vguerra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-class SecurePlant:
-    """A plant class with data validation"""
+class Plant:
+    """Keep plant attributes and simple mutations."""
 
-    def __init__(self, name: str, heihgt: int, age: int):
-        """Initialize secure plant with validations"""
-        self._name = name
-        self._height = max(0, heihgt)
-        self._age = max(0, age)
-        print(f"Plant created: {self._name}")
+    def __init__(self, name: str, height: int, age: int) -> None:
+        """Seed name, height, and age."""
+        self.name = name
+        self.height = height
+        self.age = age
+
+    def grow(self, cm: int) -> None:
+        """Increase height."""
+        self.height += cm
+
+    def age_up(self, days: int) -> None:
+        """Increase age."""
+        self.age += days
+
+    def get_info(self) -> str:
+        """Return a status summary."""
+        return f"{self.name}: {self.height}cm, {self.age} days old"
+
+
+class SecurePlant(Plant):
+    """Wrap a plant with validation helpers."""
+
+    def __init__(self, name: str, height: int, age: int) -> None:
+        """Prevent negatives on creation."""
+        sanitized_height = max(0, height)
+        sanitized_age = max(0, age)
+        super().__init__(name, sanitized_height, sanitized_age)
+        self._height = self.height
+        self._age = self.age
+        print(f"Plant created: {self.name}")
 
     def set_height(self, height: int) -> None:
-        """Update height if the value is non-negative"""
+        """Assign height if non-negative."""
         if height < 0:
-            print(f"Invalide operation attempted: heihgt {height}cm [REJECTED]")
-            print("Security: negative heihght rejected")
-        else:
-            self._height = height
-            print(f"Height updated: {height}cm [OK]")
+            print(f"Invalid operation attempted: height {height}cm [REJECTED]")
+            print("Security: Negative height rejected")
+            return
+        self._height = height
+        print(f"Height updated: {height}cm [OK]")
 
     def set_age(self, age: int) -> None:
-        """Update age if the value is non-negative"""
+        """Assign age if non-negative."""
         if age < 0:
-            print(f"Invalide operation attempted: age {age} days [REJECTED]")
-            print("Security: negative age rejected")
-        else:
-            self._age = age
-            print(f"Age updated: {age} days [OK]")
+            print(f"Invalid operation attempted: age {age} days [REJECTED]")
+            print("Security: Negative age rejected")
+            return
+        self._age = age
+        print(f"Age updated: {age} days [OK]")
 
     def get_height(self) -> int:
-        """Return height"""
+        """Return the secured height."""
         return self._height
 
     def get_age(self) -> int:
-        """Return age"""
+        """Return the secured age."""
         return self._age
 
     def display_info(self) -> None:
-        """Show current plant status"""
-        print(f"Current plant: {self._name} ({self._height}cm, {self._age} days)")
+        """Print the current secure plant status."""
+        print(f"\nCurrent plant: {self.name} ({self._height}cm, {self._age} days)")
 
+
+def main() -> None:
+    """Drive the security scenario."""
+    print("=== Garden Security System ===")
+    plant = SecurePlant("Rose", 25, 30)
+    plant.set_height(25)
+    plant.set_age(30)
+    plant.set_height(-5)
+    plant.display_info()
+
+
+if __name__ == "__main__":
+    main()
