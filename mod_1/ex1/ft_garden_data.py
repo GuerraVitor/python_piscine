@@ -1,14 +1,5 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_garden_data.py                                  :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: vguerra- <vguerra-@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/02/18 18:02:04 by vguerra-          #+#    #+#              #
-#    Updated: 2026/02/20 13:34:42 by vguerra-         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+"""Organize a small registry of garden plants."""
+
 
 class Plant:
     """Store a plant's name, height, and age."""

@@ -1,14 +1,5 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_plant_types.py                                  :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: vguerra- <vguerra-@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/02/20 11:12:18 by vguerra-          #+#    #+#              #
-#    Updated: 2026/02/20 13:51:10 by vguerra-         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+"""Describe specialized garden plants and their behaviors."""
+
 
 class Plant:
     """Track name, height, and age for any plant."""
@@ -27,20 +18,32 @@ class Plant:
 class Flower(Plant):
     """Flower type that can bloom."""
 
-    def __init__(self, name: str, height: int, age: int, color: str) -> None:
+    def __init__(
+        self,
+        name: str,
+        height: int,
+        age: int,
+        color: str,
+    ) -> None:
         """Register flower-specific data."""
         super().__init__(name, height, age)
         self.color = color
 
     def bloom(self) -> None:
         """Announce that the flower is blooming."""
-        print(f"{self.name} is blooming beautifully!\n")
+        print(f"{self.name} is blooming beautifully!")
 
 
 class Tree(Plant):
     """Tree type with trunk details."""
 
-    def __init__(self, name: str, height: int, age: int, diameter: int) -> None:
+    def __init__(
+        self,
+        name: str,
+        height: int,
+        age: int,
+        diameter: int,
+    ) -> None:
         """Register tree-specific data."""
         super().__init__(name, height, age)
         self.trunk_diameter = diameter
@@ -48,7 +51,10 @@ class Tree(Plant):
     def produce_shade(self) -> None:
         """Announce how much shade the tree makes."""
         shade_area = self.trunk_diameter * 1.6
-        print(f"{self.name} provides {shade_area:.0f} square meters of shade\n")
+        print(
+            f"{self.name} provides {shade_area:.0f} "
+            "square meters of shade"
+        )
 
 
 class Vegetable(Plant):
@@ -69,19 +75,22 @@ class Vegetable(Plant):
 
     def display_nutrition(self) -> None:
         """Announce the vegetable's nutrition."""
-        print(f"{self.name} is rich in {self.nutritional_value}\n")
+        print(f"{self.name} is rich in {self.nutritional_value}")
 
 
 def main() -> None:
     """Show specialized plant data."""
-    print("=== Garden Plant Types ===\n")
+    print("=== Garden Plant Types ===")
 
     flowers = [
         Flower("Rose", 25, 30, "red"),
         Flower("Lily", 35, 20, "pink"),
     ]
     for flower in flowers:
-        print(f"{flower.name} (Flower): {flower.get_info()}, {flower.color} color")
+        print(
+            f"{flower.name} (Flower): {flower.get_info()}, "
+            f"{flower.color} color"
+        )
         flower.bloom()
 
     trees = [
@@ -89,7 +98,10 @@ def main() -> None:
         Tree("Maple", 320, 900, 35),
     ]
     for tree in trees:
-        print(f"{tree.name} (Tree): {tree.get_info()}, {tree.trunk_diameter}cm diameter")
+        print(
+            f"{tree.name} (Tree): {tree.get_info()}, "
+            f"{tree.trunk_diameter}cm diameter"
+        )
         tree.produce_shade()
 
     vegetables = [
@@ -98,7 +110,8 @@ def main() -> None:
     ]
     for vegetable in vegetables:
         print(
-            f"{vegetable.name} (Vegetable): {vegetable.get_info()}, {vegetable.harvest_season} harvest"
+            f"{vegetable.name} (Vegetable): {vegetable.get_info()}, "
+            f"{vegetable.harvest_season} harvest"
         )
         vegetable.display_nutrition()
 

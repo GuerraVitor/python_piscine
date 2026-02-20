@@ -1,14 +1,5 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_plant_factory.py                                :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: vguerra- <vguerra-@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/02/18 18:14:47 by vguerra-          #+#    #+#              #
-#    Updated: 2026/02/20 13:40:37 by vguerra-         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+"""Create a batch of plants and report their creation."""
+
 
 class Plant:
     """Represent a plant with adjustable state."""

@@ -1,14 +1,5 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_garden_security.py                              :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: vguerra- <vguerra-@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/02/20 10:40:50 by vguerra-          #+#    #+#              #
-#    Updated: 2026/02/20 13:40:37 by vguerra-         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+"""Protect plant data with validation before mutation."""
+
 
 class Plant:
     """Keep plant attributes and simple mutations."""
@@ -47,7 +38,10 @@ class SecurePlant(Plant):
     def set_height(self, height: int) -> None:
         """Assign height if non-negative."""
         if height < 0:
-            print(f"Invalid operation attempted: height {height}cm [REJECTED]")
+            print(
+                f"Invalid operation attempted: height {height}cm "
+                "[REJECTED]"
+            )
             print("Security: Negative height rejected")
             return
         self._height = height
@@ -56,7 +50,10 @@ class SecurePlant(Plant):
     def set_age(self, age: int) -> None:
         """Assign age if non-negative."""
         if age < 0:
-            print(f"Invalid operation attempted: age {age} days [REJECTED]")
+            print(
+                f"Invalid operation attempted: age {age} days "
+                "[REJECTED]"
+            )
             print("Security: Negative age rejected")
             return
         self._age = age
@@ -72,7 +69,10 @@ class SecurePlant(Plant):
 
     def display_info(self) -> None:
         """Print the current secure plant status."""
-        print(f"\nCurrent plant: {self.name} ({self._height}cm, {self._age} days)")
+        print(
+            f"\nCurrent plant: {self.name} ({self._height}cm, "
+            f"{self._age} days)"
+        )
 
 
 def main() -> None:

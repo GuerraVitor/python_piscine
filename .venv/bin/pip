@@ -1,4 +1,4 @@
-#!/home/vitor/Projects/42-projects/milestone2/.venv/bin/python3
+#!/home/vitor/Projects/42-projects/milestone2/python_piscine/.venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

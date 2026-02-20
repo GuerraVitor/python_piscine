@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/vitor/Projects/42-projects/milestone2/.venv
+set -gx VIRTUAL_ENV /home/vitor/Projects/42-projects/milestone2/python_piscine/.venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

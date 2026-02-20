@@ -1,14 +1,5 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_plant_growth.py                                 :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: vguerra- <vguerra-@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/02/18 18:02:01 by vguerra-          #+#    #+#              #
-#    Updated: 2026/02/20 13:40:37 by vguerra-         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+"""Simulate plant growth over a week for several specimens."""
+
 
 class Plant:
     """Represent a garden plant with mutable state."""
