@@ -6,7 +6,7 @@
 #    By: vguerra- <vguerra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/18 18:14:47 by vguerra-          #+#    #+#              #
-#    Updated: 2026/02/20 10:38:44 by vguerra-         ###   ########.fr        #
+#    Updated: 2026/02/20 11:07:19 by vguerra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,5 +38,5 @@ def main() -> None:
 
     print(f"\nTotal plants created: {len(plants)}")
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+    #main()
