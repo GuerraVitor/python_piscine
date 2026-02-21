@@ -22,7 +22,7 @@ def check_temperature(temp_str):
 
 def test_temperature_input():
     """Run a suite of tests to demonstrate error handling."""
-    print("\n=== Garden Temperature Checker ===\n")
+    print("=== Garden Temperature Checker ===\n")
 
     test_cases = ["25", "abc", "111", "-42"]
 
@@ -30,7 +30,7 @@ def test_temperature_input():
         print(f"Testing temperature: {value}")
         check_temperature(value)
 
-    print("\nAll tests completed - program didn't crash :)")
+    print("All tests completed - program didn't crash :)")
 
 
 if __name__ == "__main__":
