@@ -1,4 +1,8 @@
+"""Handle basic exceptions for temperature validation."""
+
+
 def check_temperature(temp_str):
+    """Validate temperature input."""
     try:
         temp = int(temp_str)
 
@@ -15,7 +19,9 @@ def check_temperature(temp_str):
 
     return None
 
+
 def test_temperature_input():
+    """Run a suite of tests to demonstrate error handling."""
     print("\n=== Garden Temperature Checker ===\n")
 
     test_cases = ["25", "abc", "111", "-42"]
@@ -25,6 +31,7 @@ def test_temperature_input():
         check_temperature(value)
 
     print("\nAll tests completed - program didn't crash :)")
+
 
 if __name__ == "__main__":
     test_temperature_input()
