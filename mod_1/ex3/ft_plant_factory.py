@@ -44,6 +44,5 @@ def main() -> None:
     plants = [create_plant(data) for data in plant_data]
     print(f"\nTotal plants created: {len(plants)}")
 
-
 if __name__ == "__main__":
     main()

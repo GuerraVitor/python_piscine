@@ -2,17 +2,47 @@
 
 
 class Plant:
-    """Track name, height, and age for any plant."""
+    """Represent a plant with validated state."""
 
     def __init__(self, name: str, height: int, age: int) -> None:
-        """Store the shared plant data."""
+        """Store the plant's basic data with validation."""
         self.name = name
-        self.height = height
-        self.age = age
+        self._height = max(0, height)
+        self._age = max(0, age)
+
+    def get_height(self) -> int:
+        """Return the secured height."""
+        return self._height
+
+    def set_height(self, height: int) -> None:
+        """Assign height if non-negative."""
+        if height < 0:
+            print(f"Error: height {height} is invalid (must be non-negative)")
+            return
+        self._height = height
+
+    def get_age(self) -> int:
+        """Return the secured age."""
+        return self._age
+
+    def set_age(self, age: int) -> None:
+        """Assign age if non-negative."""
+        if age < 0:
+            print(f"Error: age {age} is invalid (must be non-negative)")
+            return
+        self._age = age
+
+    def grow(self, cm: int) -> None:
+        """Grow by centimeters."""
+        self.set_height(self.get_height() + cm)
+
+    def age_up(self, days: int) -> None:
+        """Age by days."""
+        self.set_age(self.get_age() + days)
 
     def get_info(self) -> str:
-        """Return a short descriptor."""
-        return f"{self.name}: {self.height}cm, {self.age} days old"
+        """Return the plant summary."""
+        return f"{self.name}: {self._height}cm, {self._age} days old"
 
 
 class Flower(Plant):
