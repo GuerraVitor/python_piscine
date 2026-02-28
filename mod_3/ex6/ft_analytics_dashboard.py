@@ -59,7 +59,8 @@ def main():
         for p in players
     }
     score_categories = {
-        category: len([name for name in categories if categories[name] == category])
+        category: len(
+            [name for name in categories if categories[name] == category])
         for category in ["high", "medium", "low"]
     }
 
