@@ -17,7 +17,7 @@ def main():
     print("\n=== Achievements Analytics ===")
 
     all_achievements = alice | bob | charlie
-    print(f"All unique achievements: {sorted(all_achievements)}")
+    print(f"All unique achievements: {(all_achievements)}")
     print(f"Total unique achievements: {len(all_achievements)}")
 
     common_all = alice & bob & charlie
