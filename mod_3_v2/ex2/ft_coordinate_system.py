@@ -14,16 +14,20 @@ def get_player_pos():
         parts = coord_str.split(',')
 
         if len(parts) != 3:
-            print("Invalid syntax")
+            print("Invalid syntax: expected exactly 3 values.")
             continue
 
-        try:
-            parts = tuple(map(float, parts))
-        except ValueError:
-            print(f"Invalid syntax")
-            continue
+        parsed_parts = []
 
-        return parts
+        for part in parts:
+            try:
+                parsed_parts.append(float(part))
+            except ValueError as e:
+                print(f"Error on parameter '{part}': {e}")
+                break
+
+        else:
+            return tuple(parsed_parts)
 
 def main():
     print("=== Game Coordinate System ===")
@@ -33,7 +37,7 @@ def main():
     x1, y1, z1 = points
     print(f"It includes: X={x1}, Y={y1}, Z={z1}")
     dist = calculate_distance((0,0,0), points)
-    print(f"Distance to center: {dist:.4f}")
+    print(f"Distance to center: {dist:.4f}\n")
 
     print("Get a second set of coordinates")
     points2 = get_player_pos()
