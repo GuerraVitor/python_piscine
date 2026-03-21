@@ -32,10 +32,13 @@ def main():
 
     x1, y1, z1 = points
     print(f"It includes: X={x1}, Y={y1}, Z={z1}")
-    print(f"Distance to center: {calculate_distance((0,0,0), points)}")
+    dist = calculate_distance((0,0,0), points)
+    print(f"Distance to center: {dist:.4f}")
 
-    print("\n=== END ===")
-
+    print("Get a second set of coordinates")
+    points2 = get_player_pos()
+    dist = calculate_distance(points, points2)
+    print(f"Distance between the 2 sets of coordinates: {dist:.4f}")
 
 if __name__ == "__main__":
     main()
