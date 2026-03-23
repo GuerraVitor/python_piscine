@@ -1,5 +1,6 @@
 import sys
 
+
 def main():
     print("=== Inventory System Analysis ===\n")
     inventory = {}
@@ -44,7 +45,6 @@ def main():
             abundant = item
     print(f"Item most abundant: {abundant} with quantity {value}")
 
-
     value = 1000000
     for item in inventory:
         if inventory[item] < value:
@@ -54,6 +54,7 @@ def main():
 
     inventory.update({'magic_item': 1})
     print(f"Update inventory: {inventory}")
+
 
 if __name__ == "__main__":
     main()

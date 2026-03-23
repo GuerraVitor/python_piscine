@@ -1,16 +1,19 @@
 import random
 from typing import Generator
 
+
 def gen_event() -> Generator[tuple, None, None]:
     """Infinity generator that produces events on demand."""
     players = ["alice", "bob", "charlie", "dylan"]
-    actions = ["run", "eat", "slep", "move", "climb", "swim", "grab", "release", "use"]
+    actions = ["run", "eat", "slep", "move", "climb", "swim", "grab",
+               "release", "use"]
 
     while True:
         name = random.choice(players)
         action = random.choice(actions)
 
         yield (name, action)
+
 
 def consume_event(event_list: list) -> Generator[tuple, None, None]:
     """Generator that empties a list randomly, item by item."""
@@ -19,6 +22,7 @@ def consume_event(event_list: list) -> Generator[tuple, None, None]:
         event_list.remove(event)
 
         yield event
+
 
 def main():
     print("=== Game Data Stream Processor ===")
@@ -37,6 +41,7 @@ def main():
     for event in consume_event(ten_event_list):
         print(f"Got event from list: {event}")
         print(f"Remains in list: {ten_event_list}")
+
 
 if __name__ == "__main__":
     main()

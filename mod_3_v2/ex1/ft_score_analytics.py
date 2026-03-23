@@ -1,5 +1,6 @@
 import sys
 
+
 def main():
     print("=== Player Score Analytics ===")
 
@@ -14,8 +15,9 @@ def main():
             print(f"Error: '{arg} is not a valid score (skipped)")
 
     if not args:
-        print("No scores provides. Usage python3 ft_score_analytics.py "
-        "<score1> <score2> ...")
+        print("No scores provides. Usage python3 ft_score_analytics.py"
+              "<score1> <score2> ...")
+
     else:
         total_players = len(scores)
         total_score = sum(scores)

@@ -1,12 +1,13 @@
 import random
 
+
 def gen_player_achiev(achievements):
 
-    n = random.randint(5,8)
+    n = random.randint(5, 8)
     return set(random.sample(list(achievements), n))
 
-def main():
 
+def main():
 
     achievements = {
         "First Steps", "Master Explorer", "Boss Slayer",
@@ -28,8 +29,8 @@ def main():
     print(f"Player Charlie: {charlie}")
     print(f"Player Dylan: {dylan}")
 
-    print(f"\nAll distinct achievements: {alice.union(bob, charlie, dylan) }")
-    print(f"\nCommon achievements: {alice.intersection(bob, charlie, dylan) }")
+    print(f"\nAll distinct achievements: {alice.union(bob, charlie, dylan)}")
+    print(f"\nCommon achievements: {alice.intersection(bob, charlie, dylan)}")
 
     print(f"\nOnly Alice has: {alice.difference(bob, charlie, dylan)}")
     print(f"Only Bob has: {bob.difference(alice, charlie, dylan)}")
@@ -40,6 +41,7 @@ def main():
     print(f"Bob is missing: {achievements.difference(bob)}")
     print(f"Charlie is missing: {achievements.difference(charlie)}")
     print(f"Dylan is missing: {achievements.difference(dylan)}")
+
 
 if __name__ == "__main__":
     main()

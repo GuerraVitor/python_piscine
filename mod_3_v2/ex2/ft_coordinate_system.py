@@ -1,11 +1,12 @@
-import sys
 import math
+
 
 def calculate_distance(p1, p2):
     x1, y1, z1 = p1
     x2, y2, z2 = p2
 
     return math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
+
 
 def get_player_pos():
     while True:
@@ -29,6 +30,7 @@ def get_player_pos():
         else:
             return tuple(parsed_parts)
 
+
 def main():
     print("=== Game Coordinate System ===")
     points = get_player_pos()
@@ -36,13 +38,14 @@ def main():
 
     x1, y1, z1 = points
     print(f"It includes: X={x1}, Y={y1}, Z={z1}")
-    dist = calculate_distance((0,0,0), points)
+    dist = calculate_distance((0, 0, 0), points)
     print(f"Distance to center: {dist:.4f}\n")
 
     print("Get a second set of coordinates")
     points2 = get_player_pos()
     dist = calculate_distance(points, points2)
     print(f"Distance between the 2 sets of coordinates: {dist:.4f}")
+
 
 if __name__ == "__main__":
     main()
