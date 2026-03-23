@@ -1,7 +1,7 @@
 import random
 from typing import Generator
 
-def gen_event() -> Generator[tuple:, None, None]:
+def gen_event() -> Generator[tuple, None, None]:
     """Infinity generator that produces events on demand."""
     players = ["alice", "bob", "charlie", "dylan"]
     actions = ["run", "eat", "slep", "move", "climb", "swim", "grab", "release", "use"]
