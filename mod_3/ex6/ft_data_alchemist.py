@@ -1,7 +1,9 @@
+"""Perform data alchemy on game data."""
 import random
 
 
 def main():
+    """Perform various data manipulations on a list of players."""
     print("=== Game Data Alchemist ===\n")
     all_players = ['Alice', 'bob', 'Charlie', 'dylan', 'Emma', 'Gregory',
                    'john', 'kevin', 'Liam']

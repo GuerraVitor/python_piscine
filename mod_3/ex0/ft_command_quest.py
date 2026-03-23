@@ -6,20 +6,21 @@ def main():
     """Parse and display command-line arguments."""
     print("=== Command Quest ===")
 
-    program_name = sys.argv[0]
-    user_args = sys.argv[1:]
-    if not user_args:
-        print("No arguments provided!")
-        print(f"Program name: {program_name}")
-        print(f"Total arguments: {len(sys.argv)}")
-    else:
-        print(f"Program name: {program_name}")
-        print(f"Arguments received: {len(user_args)}")
+    prog_name = sys.argv[0]
+    args_receives = sys.argv[1:]
 
-        for i, arg in enumerate(user_args, start=1):
+    count_args = len(args_receives)
+    if count_args == 0:
+        print("No arguments provided!")
+
+    print(f"Program name: {prog_name}")
+
+    if count_args > 0:
+        print(f"Arguments received: {count_args}")
+        for i, arg in enumerate(args_receives, start=1):
             print(f"Argument {i}: {arg}")
 
-        print(f"Total Arguments: {len(sys.argv)}\n")
+    print(f"Total arguments: {count_args+1}\n")
 
 
 if __name__ == "__main__":

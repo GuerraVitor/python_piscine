@@ -1,56 +1,54 @@
-"""Manage 3D coordinates using tuples and math operations."""
+"""Handle game coordinates and distances."""
 import math
 
 
 def calculate_distance(p1, p2):
-    """Calculate Euclidean distance between two 3D points."""
+    """Calculate the Euclidean distance between two 3D points."""
     x1, y1, z1 = p1
     x2, y2, z2 = p2
 
-    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
+    return math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
 
 
-def parse_coordinates(coord_str):
-    """Parse a string 'x,y,z' into a tuple (x, y, z)."""
-    print(f'\nParsing coordinates: "{coord_str}"')
-    try:
+def get_player_pos():
+    """Prompt the user for 3D coordinates and return them as a tuple."""
+    while True:
+        coord_str = input("Enter new coordinates as float in format 'x,y,z': ")
+
         parts = coord_str.split(',')
-        coords = tuple(map(int, parts))
 
-        print(f"Parsed position: {coords}")
-        return coords
+        if len(parts) != 3:
+            print("Invalid syntax: expected exactly 3 values.")
+            continue
 
-    except ValueError as e:
-        print(f"Error parsing coordinates: {e}")
-        print(f"Error details - type: {type(e).__name__}, Args: {e.args}")
-        return None
+        parsed_parts = []
+
+        for part in parts:
+            try:
+                parsed_parts.append(float(part))
+            except ValueError as e:
+                print(f"Error on parameter '{part}': {e}")
+                break
+
+        else:
+            return tuple(parsed_parts)
 
 
 def main():
-    """Demonstrate 3D coordinate system features."""
+    """Get two points and calculate the distance between them."""
     print("=== Game Coordinate System ===")
+    points = get_player_pos()
+    print(f"Got a fist tuple: {points}")
 
-    spawn_point = (10, 20, 5)
-    origin = (0, 0, 0)
-    print(f"\nPosition created: {spawn_point}")
+    x1, y1, z1 = points
+    print(f"It includes: X={x1}, Y={y1}, Z={z1}")
+    dist = calculate_distance((0, 0, 0), points)
+    print(f"Distance to center: {dist:.4f}\n")
 
-    dist = calculate_distance(origin, spawn_point)
-    print(f"Distance between {origin} and {spawn_point}: {dist:.2f}")
-
-    input_str = "3,4,0"
-    player_pos = parse_coordinates(input_str)
-
-    if player_pos:
-        dist = calculate_distance(origin, player_pos)
-        print(f"Distance Between {origin} and {player_pos}: {dist}")
-
-    parse_coordinates("abc,bdc,cde")
-
-    if player_pos:
-        print("\nUnpacking demonstration:")
-        x, y, z = player_pos
-        print(f"Player at x={x}, y={y}, z={z}")
-        print(f"Coordinates: X={x}, Y={y}, Z={z}")
+    print("Get a second set of coordinates")
+    points2 = get_player_pos()
+    dist = calculate_distance(points, points2)
+    print(f"Distance between the 2 sets of coordinates: {dist:.4f}")
 
 
 if __name__ == "__main__":
