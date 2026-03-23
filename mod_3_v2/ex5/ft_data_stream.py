@@ -24,7 +24,7 @@ def main():
     print("=== Game Data Stream Processor ===")
     stream = gen_event()
 
-    for i in range(1000):
+    for i in range(1001):
         event = next(stream)
         print(f"Event {i}: Player {event[0]} did action {event[1]}")
 
@@ -32,7 +32,7 @@ def main():
     for _ in range(10):
         ten_event_list.append(next(stream))
 
-    print(f"Built list of 1'0 events: {ten_event_list}")
+    print(f"Built list of 10 events: {ten_event_list}")
 
     for event in consume_event(ten_event_list):
         print(f"Got event from list: {event}")
