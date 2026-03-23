@@ -37,12 +37,23 @@ def main():
     for item in inventory:
         print(f"Item {item} represents {inventory[item]/total*100:.1f}%")
 
+    value = 0
     for item in inventory:
-        value = 0
         if inventory[item] > value:
             value = inventory[item]
             abundant = item
-    print(f"Item most abundant: {abundant} with quantity {qty}")
+    print(f"Item most abundant: {abundant} with quantity {value}")
+
+
+    value = 1000000
+    for item in inventory:
+        if inventory[item] < value:
+            value = inventory[item]
+            abundant = item
+    print(f"Item least abundant: {abundant} with quantity {value}")
+
+    inventory.update({'magic_item': 1})
+    print(f"Update inventory: {inventory}")
 
 if __name__ == "__main__":
     main()
