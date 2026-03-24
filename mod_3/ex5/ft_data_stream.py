@@ -16,7 +16,8 @@ def gen_event() -> Generator[tuple[str, str], None, None]:
         yield (name, action)
 
 
-def consume_event(event_list: list[tuple[str, str]]) -> Generator[tuple[str, str], None, None]:
+def consume_event(event_list: list[tuple[str, str]]
+                  ) -> Generator[tuple[str, str], None, None]:
     """Empty a list randomly, item by item."""
     while len(event_list) > 0:
         event = random.choice(event_list)
