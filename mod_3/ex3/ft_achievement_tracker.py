@@ -2,15 +2,15 @@
 import random
 
 
-def gen_player_achiev(achievements):
+def gen_player_achiev(achievements: set[str]) -> set[str]:
     """Generate a random set of achievements for a player."""
     n = random.randint(5, 8)
     return set(random.sample(list(achievements), n))
 
 
-def main():
+def main() -> None:
     """Generate achievements for players and compare them."""
-    achievements = {
+    achievements: set[str] = {
         "First Steps", "Master Explorer", "Boss Slayer",
         "Collector Supreme", "Untouchable", "Strategist",
         "Speed Runner", "Treasure Hunter", "Sharp Mind",
@@ -20,10 +20,10 @@ def main():
 
     print("=== Achievmenent Tracker System ===")
 
-    alice = set(gen_player_achiev(achievements))
-    bob = set(gen_player_achiev(achievements))
-    charlie = set(gen_player_achiev(achievements))
-    dylan = set(gen_player_achiev(achievements))
+    alice: set[str] = gen_player_achiev(achievements)
+    bob: set[str] = gen_player_achiev(achievements)
+    charlie: set[str] = gen_player_achiev(achievements)
+    dylan: set[str] = gen_player_achiev(achievements)
 
     print(f"\nPlayer Alice: {alice}")
     print(f"Player Bob: {bob}")

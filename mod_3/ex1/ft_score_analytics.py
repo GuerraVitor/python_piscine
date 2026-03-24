@@ -2,16 +2,16 @@
 import sys
 
 
-def main():
+def main() -> None:
     """Parse and manipule data received via the command line."""
     print("=== Player Score Analytics ===")
 
-    args = sys.argv[1:]
-    scores = []
+    args: list[str] = sys.argv[1:]
+    scores: list[int] = []
 
     for arg in args:
         try:
-            score = int(arg)
+            score: int = int(arg)
             scores.append(score)
         except ValueError:
             print(f"Error: '{arg} is not a valid score (skipped)")
@@ -21,12 +21,12 @@ def main():
               "<score1> <score2> ...")
 
     else:
-        total_players = len(scores)
-        total_score = sum(scores)
-        average = total_score / total_players
-        high = max(scores)
-        low = min(scores)
-        score_range = high - low
+        total_players: int = len(scores)
+        total_score: int = sum(scores)
+        average: float = total_score / total_players
+        high: int = max(scores)
+        low: int = min(scores)
+        score_range: int = high - low
 
         print(f"Total players: {total_players}")
         print(f"Total score: {total_score}")

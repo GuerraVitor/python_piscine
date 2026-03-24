@@ -2,14 +2,14 @@
 import sys
 
 
-def main():
+def main() -> None:
     """Parse and display command-line arguments."""
     print("=== Command Quest ===")
 
-    prog_name = sys.argv[0]
-    args_receives = sys.argv[1:]
+    prog_name: str = sys.argv[0]
+    args_receives: list[str] = sys.argv[1:]
 
-    count_args = len(args_receives)
+    count_args: int = len(args_receives)
     if count_args == 0:
         print("No arguments provided!")
 
