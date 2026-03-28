@@ -158,6 +158,22 @@ def main() -> None:
         print("Validation: Log entry verified")
         print(log_proc.process(log_data))
 
+    print("\n=== Polymorphic Processing Demo ===")
+    print("\nProcessing multiple data types through same interface...")
+
+    mixed_data: List[Any] = [[1, 2, 3], "Code Nexus", "INFO: System ready"]
+    processors: List[DataProcessor] = [num_proc, text_proc, log_proc]
+
+    count_id: int = 1
+    for i in [0, 1, 2]:
+        raw_res: str = processors[i].process(mixed_data[i])
+        clean_res: str = raw_res.replace("Output: ", "")
+
+        print(f"Result {count_id}: {clean_res}")
+        count_id += 1
+
+    print("\nFoundation systems online. Nexus ready for advanced streams.")
+
 
 if __name__ == "__main__":
     main()
