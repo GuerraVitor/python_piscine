@@ -17,7 +17,7 @@ class DataProcessor(ABC):
         """Validade if data is appropriate for this processor."""
         pass
 
-    def format_ouput(self, result: str) -> str:
+    def format_output(self, result: str) -> str:
         """Format the output string."""
         return f"Ouput: {result}"
 
@@ -127,3 +127,23 @@ class LogProcessor(DataProcessor):
         prefix: str = "[ALERT]" if level == "ERROR" else "[INFO]"
         result: str = f"{prefix} {level} level detected: {message}"
         return super().format_output(result)
+
+
+def main() -> None:
+    """Demonstrate polymorphic behavior of the Nexus processors."""
+    print("=== CODE NEXUS - DATA PROCESSOR FOUNDATION ===")
+
+    num_proc = NumericProcessor()
+    text_proc = TextProcessor()
+    log_proc = LogProcessor()
+
+    print("\nInitializing Numeric Processor...")
+    num_data: List[int] = [1, 2, 3, 4, 5]
+    print(f"Processing data: {num_data}")
+    if num_proc.validate(num_data):
+        print("Validation: Numeric data verified")
+        print("num_proc.process(num_data)\n")
+
+
+if __name__ == "__main__":
+    main()
