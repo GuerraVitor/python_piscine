@@ -5,21 +5,21 @@ from typing import Any, List, Union
 
 
 class DataProcessor(ABC):
-    """Abstract base class defining the common processing interface."""
-
-    @abstractmethod
-    def process(self, data: Any) -> str:
-        """Process data and return result string."""
-        pass
+    """Abstract base class for all processors."""
 
     @abstractmethod
     def validate(self, data: Any) -> bool:
-        """Validade if data is appropriate for this processor."""
+        """Validate data."""
+        pass
+
+    @abstractmethod
+    def process(self, data: Any) -> str:
+        """Process data."""
         pass
 
     def format_output(self, result: str) -> str:
-        """Format the output string."""
-        return f"Ouput: {result}"
+        """Standard output formatting."""
+        return f"Output: {result}"
 
 
 class NumericProcessor(DataProcessor):
@@ -93,7 +93,7 @@ class TextProcessor(DataProcessor):
         result: str = (
             f"Processed text: {char_count} characters, {word_count} words"
         )
-        return super.format_output(result)
+        return super().format_output(result)
 
 
 class LogProcessor(DataProcessor):
@@ -142,7 +142,21 @@ def main() -> None:
     print(f"Processing data: {num_data}")
     if num_proc.validate(num_data):
         print("Validation: Numeric data verified")
-        print("num_proc.process(num_data)\n")
+        print(num_proc.process(num_data))
+
+    print("\nInitializing Text Processor...")
+    text_data: str = "Hello Nexus World"
+    print(f"Processing data: \"{text_data}\"")
+    if text_proc.validate(text_data):
+        print("Validation: Text data verified")
+        print(text_proc.process(text_data))
+
+    print("\nInitializing Log Processor...")
+    log_data: str = "ERROR: Connection timeout"
+    print(f"Processing data: \"{log_data}\"")
+    if log_proc.validate(log_data):
+        print("Validation: Log entry verified")
+        print(log_proc.process(log_data))
 
 
 if __name__ == "__main__":
