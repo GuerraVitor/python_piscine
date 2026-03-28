@@ -126,6 +126,43 @@ class TransactionStream(DataStream):
         )
 
 
+class EventStream(DataStream):
+    """Specialized stream for tracking system events and errors."""
+
+    def __init__(self, stream_id: str) -> None:
+        """Initialize the event stream and announce its creation."""
+        super().__init__(stream_id)
+        print("\nInitializing Event Stream...")
+        print(f"Stream ID: {self.stream_id}, Type: System Events")
+
+    def process_batch(self, data_batch: List[Any]) -> str:
+        """Process system events and count error occurrences."""
+        if not isinstance(data_batch, list):
+            return "Error: Invalid batch format."
+
+        valid_events: List[str] = [
+            item for item in data_batch if isinstance(item, str)
+        ]
+        print(f"Processing transaction batch: {valid_events}")
+
+        total_events: int = 0
+        for _ in valid_events:
+            total_events += 1
+
+        error_events: List[str] = [
+            event for event in valid_events if "error" in event
+        ]
+
+        error_count: int = 0
+        for _ in error_events:
+            error_count += 1
+
+        error_word: str = "error" if error_count == 1 else "errors"
+        return (
+            f"Event analysis: {total_events} events, "
+            f"{error_count} {error_word} detected"
+        )
+
 
 def main() -> None:
     print("=== CODE NEXUS - POLYMORPHIC STREAM SYSTEM ===")
@@ -137,6 +174,11 @@ def main() -> None:
     trans = TransactionStream("TRANS_001")
     trans_data: List[Any] = ["buy:100", "sell:150", "buy:75"]
     print(trans.process_batch(trans_data))
+
+    event = EventStream("EVENT_001")
+    event_data: List[Any] = ["login", "error", "logout"]
+    print(event.process_batch(event_data))
+
 
 if __name__ == "__main__":
     main()
