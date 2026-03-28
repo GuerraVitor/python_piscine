@@ -32,3 +32,44 @@ class DataStream(ABC):
             "stream_id": self.stream_id,
             "status": "active"
         }
+
+
+class SensorStream(DataStream):
+    """Specialized stream for processing environmental sensor data."""
+
+    def __init__(self, stream_id: str) -> None:
+        super().__init__(stream_id)
+
+    def process_batch(self, data_batch: List[Any]) -> str:
+
+        if not isinstance(data_batch, list):
+            return "Error: Invalid batch format."
+
+        valid_items: List[str] = [
+            item for item in data_batch if isinstance(item, str)
+        ]
+
+        total_readings: int = 0
+        for _ in valid_items:
+            total_readings += 1
+
+        temp_strs: List[str] = [
+            item.split(":")[1] for item in valid_items if "temp:" in item
+        ]
+
+        temp_sum: float = 0.0
+        temp_count: int = 0
+
+        for t_val in temp_strs:
+            try:
+                temp_sum += float(t_val)
+                temp_count += 1
+            except ValueError:
+                continue
+
+        avg_temp = temp_sum / temp_count if temp_count > 0 else 0.0
+
+        return (
+            f"Sensor Analysis: {total_readings} readings processed, "
+            f"avg temp: {avg_temp}ºC"
+        )
