@@ -36,9 +36,10 @@ class DataStream(ABC):
 
 class SensorStream(DataStream):
     """Specialized stream for processing environmental sensor data."""
-
     def __init__(self, stream_id: str) -> None:
+        print("Initializing Sensor Stream...")
         super().__init__(stream_id)
+        print(f"Stream ID: {self.stream_id}, Type: Environmental Data")
 
     def process_batch(self, data_batch: List[Any]) -> str:
 
@@ -49,6 +50,7 @@ class SensorStream(DataStream):
             item for item in data_batch if isinstance(item, str)
         ]
 
+        print(f"Processing sensor batch: {valid_items}")
         total_readings: int = 0
         for _ in valid_items:
             total_readings += 1
@@ -71,5 +73,18 @@ class SensorStream(DataStream):
 
         return (
             f"Sensor Analysis: {total_readings} readings processed, "
-            f"avg temp: {avg_temp}ºC"
+            f"avg temp: {avg_temp:.1f}ºC\n"
         )
+
+
+def main() -> None:
+    print("=== CODE NEXUS - POLYMORPHIC STREAM SYSTEM ===")
+
+    sensor = SensorStream("SENSOR_001")
+    sensor_data: List[Any] = ["temp:22.5", "humidity:65",
+                              "pressure:1013", "temp:25.5",
+                              "temp:29.7"]
+    print(sensor.process_batch(sensor_data))
+
+if __name__ == "__main__":
+    main()
