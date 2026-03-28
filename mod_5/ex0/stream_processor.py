@@ -1,7 +1,7 @@
 """Provide polymorphic data stream processing architecture."""
 
 from abc import ABC, abstractmethod
-from typing import Any, List, Dict, Union, Optional
+from typing import Any, List, Union
 
 
 class DataProcessor(ABC):
@@ -59,4 +59,71 @@ class NumericProcessor(DataProcessor):
         result: str = (
             f"Processed {count} numeric values, sum={sum_val}, avg={avg}"
         )
+        return super().format_output(result)
+
+
+class TextProcessor(DataProcessor):
+    """Specialized processor for text string."""
+
+    def validate(self, data: Any) -> bool:
+        """Validade if data is a string."""
+        try:
+            _ = data.upper()
+            return True
+        except AttributeError:
+            return False
+
+    def process(self, data: Any) -> str:
+        """Process text data counting characters and words."""
+        if not self.validate(data):
+            return "Error: Invali text data"
+
+        char_count: int = 0
+        word_count: int = 0
+        in_word: bool = False
+
+        for char in data:
+            char_count += 1
+            if char != ' ' and not in_word:
+                in_word = True
+                word_count += 1
+            elif char == ' ':
+                in_word = False
+
+        result: str = (
+            f"Processed text: {char_count} characters, {word_count} words"
+        )
+        return super.format_output(result)
+
+
+class LogProcessor(DataProcessor):
+    """Specialized processor for log entries."""
+
+    def validate(self, data: Any) -> bool:
+        """Validate log string for specific archive tags."""
+        try:
+            _ = data.upper()
+            if "ERROR:" in data or "INFO:" in data:
+                return True
+            return False
+        except AttributeError:
+            return False
+
+    def process(self, data: Any) -> str:
+        """Process log entries to identify severity levels."""
+        if not self.validate(data):
+            return "Error: Invalid log data"
+
+        parts: List[str] = data.split(":", 1)
+        level: str = parts[0]
+
+        message: str = ""
+        found: bool = False
+        for p in parts:
+            if found:
+                message = p.strip()
+            found = True
+
+        prefix: str = "[ALERT]" if level == "ERROR" else "[INFO]"
+        result: str = f"{prefix} {level} level detected: {message}"
         return super().format_output(result)
