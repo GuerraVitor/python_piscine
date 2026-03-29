@@ -11,3 +11,13 @@ class ProcessingStage(Protocol):
     def process(self, data: Any) -> Any:
         """Process data and return result."""
         ...
+
+
+class InputStage:
+    """Stage 1: Input validation and parsing."""
+
+    def process(self, data: Any) -> Any:
+        """Validate the incoming data."""
+        if isinstance(data, list):
+            return [str(item).strip() for item in data]
+        return data
