@@ -21,3 +21,32 @@ class InputStage:
         if isinstance(data, list):
             return [str(item).strip() for item in data]
         return data
+
+
+class TransformStage:
+    def process(self, data: Any) -> Any:
+        if data == "fail_sim":
+            raise ValueError("Invalid data format")
+
+        if isinstance(data, dict):
+            return {str(i): str(j).upper() for i, j in data.items()}
+
+        return data
+
+
+class OutputStage:
+    def process(self, data: Any) -> Any:
+        return data
+
+
+class ProcessingPipeline(ABC):
+    def __init__(self, pipeline_id: str) -> None:
+        self.pipeline_id: str = pipeline_id
+        self.stages: Deque[ProcessingStage] = deque()
+
+    def add_stage(self, stage: ProcessingStage) -> None:
+        self.stages.append(stage)
+
+    @abstractmethod
+    def process(self, data: Any) -> Union[str, Any]:
+        pass
