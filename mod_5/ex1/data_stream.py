@@ -12,6 +12,7 @@ class DataStream(ABC):
         """Initialize stream with identifier."""
         self.stream_id: str = stream_id
 
+    @abstractmethod
     def process_batch(self, data_batch: List[Any]) -> str:
         """Process a batch of data."""
         pass
@@ -164,11 +165,37 @@ class EventStream(DataStream):
         )
 
 
+class StreamProcessor:
+    """Stream Manager that handles multiple stream types polymorphically."""
+
+    def __init__(self) -> None:
+        """Initialize the processor with an empty list of streams."""
+        self.streams: List[DataStream] = []
+
+    def add_stream(self, stream: DataStream) -> None:
+        """Add a data stream to the processor."""
+        self.streams.append(stream)
+
+    def process_all(self, batches: Dict[str, List[Any]]) -> None:
+        """Process batches for all registered streams polymorphically."""
+        print("\n=== Polymorphic Stream Processing ===")
+        print("Processing mixed stream types through unified interface...")
+
+        print("\nBatch 1 Results:")
+
+        for stream in self.streams:
+            for stream_id in batches:
+                if stream.stream_id == stream_id:
+                    result: str = stream.process_batch(batches[stream_id])
+                    print(f"- {result}")
+
+
 def main() -> None:
-    print("=== CODE NEXUS - POLYMORPHIC STREAM SYSTEM ===")
+    """Execute the main Stream System demonstration."""
+    print("CODE NEXUS POLYMORPHIC STREAM SYSTEM")
 
     sensor = SensorStream("SENSOR_001")
-    sensor_data: List[Any] = ["temp:22.5", "humidity:65", "pressure:1013",]
+    sensor_data: List[Any] = ["temp:22.5", "humidity:65", "pressure:1013"]
     print(sensor.process_batch(sensor_data))
 
     trans = TransactionStream("TRANS_001")
@@ -178,6 +205,54 @@ def main() -> None:
     event = EventStream("EVENT_001")
     event_data: List[Any] = ["login", "error", "logout"]
     print(event.process_batch(event_data))
+
+    processor = StreamProcessor()
+    processor.add_stream(sensor)
+    processor.add_stream(trans)
+    processor.add_stream(event)
+
+    mixed_batches: Dict[str, List[Any]] = {
+        "SENSOR_001": ["temp:25.0", "temp:20.0"],
+        "TRANS_001": ["buy:200", "sell:50", "buy:50", "sell:100"],
+        "EVENT_001": ["login", "warning", "error"]
+    }
+
+    processor.process_all(mixed_batches)
+
+    print("\nStream filtering active: High-priority data only")
+
+    raw_sensor_data: List[Any] = [
+        "temp:normal",
+        "temp:critical alert",
+        "pressure:stable",
+        "temp:critical alert"
+    ]
+    raw_trans_data: List[Any] = [
+        "buy:50",
+        "buy:10000 large transaction",
+        "sell:10"
+    ]
+
+    filtered_sensor: List[Any] = sensor.filter_data(
+        raw_sensor_data, criteria="critical"
+    )
+    filtered_trans: List[Any] = trans.filter_data(
+        raw_trans_data, criteria="large"
+    )
+
+    sensor_alerts_count: int = 0
+    for _ in filtered_sensor:
+        sensor_alerts_count += 1
+
+    trans_alerts_count: int = 0
+    for _ in filtered_trans:
+        trans_alerts_count += 1
+
+    print(
+        f"Filtered results: {sensor_alerts_count} critical sensor alerts, "
+        f"{trans_alerts_count} large transaction"
+    )
+    print("\nAll streams processed successfully. Nexus throughput optimal.")
 
 
 if __name__ == "__main__":
