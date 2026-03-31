@@ -18,7 +18,7 @@ class DataProcessor(ABC):
         pass
 
     def format_output(self, result: str) -> str:
-        """Standard output formatting."""
+        """Formmated standard output."""
         return f"Output: {result}"
 
 
