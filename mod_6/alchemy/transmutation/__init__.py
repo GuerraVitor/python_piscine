@@ -1,4 +1,4 @@
-"""Transmutation package for advanced alchemy."""
+"""Transmutation package exposing transformation recipes."""
 
 from .recipes import lead_to_gold
 
