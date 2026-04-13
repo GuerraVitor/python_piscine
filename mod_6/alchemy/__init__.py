@@ -1,10 +1,5 @@
-"""Alchemy package for creating elemental objects."""
+"""Grimoire package for magic spells."""
 
-__version__ = "1.0.0"
-__author__ = "Vitor Guerra"
+from .light_spellbook import light_spell_record
 
-from .elements import create_air
-from .potions import strength_potion, healing_potion as heal
-from . import transmutation
-
-__all__ = ["create_air", "strength_potion", "heal", "transmutation"]
+__all__ = ["light_spell_record"]
