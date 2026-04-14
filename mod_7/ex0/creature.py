@@ -20,49 +20,73 @@ class Creature(ABC):
         pass
 
 
-class Flameling(Creature):
-    """A Fire-type creature card."""
+class Charmander(Creature):
+    """Concrete implementation of Charmander."""
 
     def __init__(self) -> None:
-        """Initialize a creature of Flameling."""
-        super().__init__("Flameling", "Fire")
+        """Initialize Charmander."""
+        super().__init__("Charmander", "Fire")
 
     def attack(self) -> str:
-        """Return the creature's attack message."""
-        return "Flameling uses Ember!"
+        """Return Charmander's attack."""
+        return "Charmander uses Ember!"
 
 
-class Pyrodon(Creature):
-    """A Fire/Flying-type creature card."""
+class Charizard(Creature):
+    """Concrete implementation of Charizard."""
 
     def __init__(self) -> None:
-        """Initialize a creature of Pyrodon."""
-        super().__init__("Pyrodon", "Fire/Flying")
+        """Initialize Charizard."""
+        super().__init__("Charizard", "Fire/Flying")
 
     def attack(self) -> str:
-        """Abstract method to return the creature's attack message."""
-        return "Pyrodon uses Flamethrower!"
+        """Return Charizard's attack."""
+        return "Charizard uses Flamethrower!"
 
 
-class Aquabub(Creature):
-    """A Water-type creature card."""
+class Squirtle(Creature):
+    """Concrete implementation of Squirtle."""
 
     def __init__(self) -> None:
-        """Initialize a creature of Aquabub."""
-        super().__init__("Aquabub", "Water")
+        """Initialize Squirtle."""
+        super().__init__("Squirtle", "Water")
 
     def attack(self) -> str:
-        """Abstract method to return the creature's attack message."""
-        return "Aquabub uses Water Gun!"
+        """Return Squirtle's attack."""
+        return "Squirtle uses Water Gun!"
 
 
-class Torragon(Creature):
-    """A Water-type creature card."""
+class Blastoise(Creature):
+    """Concrete implementation of Blastoise."""
 
     def __init__(self) -> None:
-        """Initialize a creature of Torragon."""
-        super().__init__("Torragon", "Water")
+        """Initialize Blastoise."""
+        super().__init__("Blastoise", "Water")
 
     def attack(self) -> str:
-        """Abstract method to return the creature's attack message."""
-        return "Torragon uses Hydro Pump!"
+        """Return Blastoise's attack."""
+        return "Blastoise uses Hydro Pump!"
+
+
+class Bulbasaur(Creature):
+    """Concrete implementation of Bulbasaur."""
+
+    def __init__(self) -> None:
+        """Initialize Bulbasaur."""
+        super().__init__("Bulbasaur", "Grass/Poison")
+
+    def attack(self) -> str:
+        """Return Bulbasaur's attack."""
+        return "Bulbasaur uses Vine Whip!"
+
+
+class Venusaur(Creature):
+    """Concrete implementation of Venusaur."""
+
+    def __init__(self) -> None:
+        """Initialize Venusaur."""
+        super().__init__("Venusaur", "Grass/Poison")
+
+    def attack(self) -> str:
+        """Return Venusaur's attack."""
+        return "Venusaur uses Solar Beam!"
