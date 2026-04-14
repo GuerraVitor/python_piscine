@@ -33,7 +33,6 @@ def main() -> None:
         for factory in factories:
             test_factory(factory)
 
-        # Battle: Charmander vs Bulbasaur
         test_battle(factories[0], factories[2])
     except Exception as e:
         print(f"Error: {e}")
