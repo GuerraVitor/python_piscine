@@ -1,4 +1,4 @@
-"""Module defining various creature classes for a card game."""
+"""Module defining creature families for a card game."""
 from abc import ABC, abstractmethod
 
 
