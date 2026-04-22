@@ -2,6 +2,7 @@
 from ex1 import HealingCreatureFactory, TransformCreatureFactory
 from ex1.capabilities import HealCapability, TransformCapability
 
+
 def test_healing() -> None:
     """Test creatures with healing capabilities."""
     print("Testing Creature with healing capability")
