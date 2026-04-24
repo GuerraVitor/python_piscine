@@ -6,7 +6,7 @@ class HealCapability(ABC):
     """Abstract interface for creatures that can heal."""
 
     @abstractmethod
-    def heal(self) -> str:
+    def heal(self, target: str | None = None) -> str:
         """Perform a healing action."""
         pass
 

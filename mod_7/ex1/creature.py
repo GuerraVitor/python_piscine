@@ -14,7 +14,7 @@ class Sproutling(Creature, HealCapability):
         """Perform Sproutling's attack."""
         return "Sproutling uses Vine Whip!"
 
-    def heal(self) -> str:
+    def heal(self, target: str | None = None) -> str:
         """Heal Sproutling."""
         return "Sproutling heals itself for a small amount"
 
@@ -23,14 +23,14 @@ class Bloomelle(Creature, HealCapability):
     """Concrete healing creature (Evolved form)."""
 
     def __init__(self) -> None:
-        """Initialize Sproutling."""
+        """Initialize Bloomelle."""
         super().__init__("Bloomelle", "Grass/Fairy")
 
     def attack(self) -> str:
         """Perform Bloomelle's attack."""
         return "Bloomelle uses Petal Dance!"
 
-    def heal(self) -> str:
+    def heal(self, target: str | None = None) -> str:
         """Heal Bloomelle and allies."""
         return "Bloomelle heals itself and others for a large amount"
 
