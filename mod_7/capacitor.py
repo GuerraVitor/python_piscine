@@ -1,10 +1,10 @@
-"""Module for testing specialized creature capabilities."""
+"""Module for testing specialized creature capabilities in the Pokémon-name variation."""
 from ex1 import HealingCreatureFactory, TransformCreatureFactory
 from ex1.capabilities import HealCapability, TransformCapability
 
 
 def test_healing() -> None:
-    """Test creatures with healing capabilities."""
+    """Test healing creatures for this Pokémon-name variation."""
     print("Testing Creature with healing capability")
     factory = HealingCreatureFactory()
 
@@ -24,7 +24,7 @@ def test_healing() -> None:
 
 
 def test_transform() -> None:
-    """Test creatures with transforming capabilities."""
+    """Test transforming creatures for this Pokémon-name variation."""
     print("\nTesting Creature with transform capability")
     factory = TransformCreatureFactory()
 
