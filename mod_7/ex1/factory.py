@@ -1,7 +1,7 @@
 """Module defining factories for specialized creatures."""
 from ex0.factory import CreatureFactory
 from ex0.creature import Creature
-from .creature import Sproutling, Bloomelle, Shiftling, Morphagon
+from .creature import Oddish, Vileplume, Zorua, Zoroark
 
 
 class HealingCreatureFactory(CreatureFactory):
@@ -9,11 +9,11 @@ class HealingCreatureFactory(CreatureFactory):
 
     def create_base(self) -> Creature:
         """Create the base healing creature."""
-        return Sproutling()
+        return Oddish()
 
     def create_evolved(self) -> Creature:
         """Create the evolved healing creature."""
-        return Bloomelle()
+        return Vileplume()
 
 
 class TransformCreatureFactory(CreatureFactory):
@@ -21,8 +21,8 @@ class TransformCreatureFactory(CreatureFactory):
 
     def create_base(self) -> Creature:
         """Create the base transforming creature."""
-        return Shiftling()
+        return Zorua()
 
     def create_evolved(self) -> Creature:
         """Create the evolved transforming creature."""
-        return Morphagon()
+        return Zoroark()
