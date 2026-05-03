@@ -1,5 +1,5 @@
-"""Package exposing Pokémon factories."""
+"""Package exposing creature factories."""
 
-from .factory import CreatureFactory, FireFactory, WaterFactory, GrassFactory
+from .factory import AquaFactory, CreatureFactory, FlameFactory
 
-__all__ = ["CreatureFactory", "FireFactory", "WaterFactory", "GrassFactory"]
+__all__ = ["CreatureFactory", "FlameFactory", "AquaFactory"]

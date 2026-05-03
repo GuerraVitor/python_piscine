@@ -1,56 +1,36 @@
-"""Module defining factory methods for families."""
+"""Creature factory definitions for the abstract factory exercise."""
 from abc import ABC, abstractmethod
-from .creature import (
-    Creature, Charmander, Charizard,
-    Squirtle, Blastoise, Bulbasaur, Venusaur
-)
+
+from .creature import Aquabub, Creature, Flameling, Pyrodon, Torragon
 
 
 class CreatureFactory(ABC):
-    """Abstract factort interface for creating creatures. families."""
+    """Abstract factory for creating a creature family."""
 
     @abstractmethod
     def create_base(self) -> Creature:
-        """Create the base form of the family."""
-        pass
+        """Create the base creature for the family."""
 
     @abstractmethod
     def create_evolved(self) -> Creature:
-        """Create the evolved form of the family."""
-        pass
+        """Create the evolved creature for the family."""
 
 
-class FireFactory(CreatureFactory):
-    """Factory for the fire family."""
-
-    def create_base(self) -> Creature:
-        """Create Charmander."""
-        return Charmander()
-
-    def create_evolved(self) -> Creature:
-        """Return Charizard."""
-        return Charizard()
-
-
-class WaterFactory(CreatureFactory):
-    """Factory for the water family."""
+class FlameFactory(CreatureFactory):
+    """Factory for the flame family."""
 
     def create_base(self) -> Creature:
-        """Create Squirtle."""
-        return Squirtle()
+        return Flameling()
 
     def create_evolved(self) -> Creature:
-        """Return Blastoise."""
-        return Blastoise()
+        return Pyrodon()
 
 
-class GrassFactory(CreatureFactory):
-    """Factory for the grass family."""
+class AquaFactory(CreatureFactory):
+    """Factory for the aqua family."""
 
     def create_base(self) -> Creature:
-        """Create Bulbasaur."""
-        return Bulbasaur()
+        return Aquabub()
 
     def create_evolved(self) -> Creature:
-        """Return Venusaur."""
-        return Venusaur()
+        return Torragon()
