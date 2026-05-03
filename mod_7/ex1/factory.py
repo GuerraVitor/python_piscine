@@ -1,28 +1,25 @@
-"""Module defining factories for specialized creatures."""
-from ex0.factory import CreatureFactory
+"""Factories for specialized creature families."""
 from ex0.creature import Creature
-from .creature import Oddish, Vileplume, Zorua, Zoroark
+from ex0.factory import CreatureFactory
+
+from .creature import Bloomelle, Morphagon, Sproutling, Shiftling
 
 
 class HealingCreatureFactory(CreatureFactory):
-    """Factory for creating creatures with healing capabilities."""
+    """Factory for the healing family."""
 
     def create_base(self) -> Creature:
-        """Create the base healing creature."""
-        return Oddish()
+        return Sproutling()
 
     def create_evolved(self) -> Creature:
-        """Create the evolved healing creature."""
-        return Vileplume()
+        return Bloomelle()
 
 
 class TransformCreatureFactory(CreatureFactory):
-    """Factory for creating creatures with transform capabilities."""
+    """Factory for the transform family."""
 
     def create_base(self) -> Creature:
-        """Create the base transforming creature."""
-        return Zorua()
+        return Shiftling()
 
     def create_evolved(self) -> Creature:
-        """Create the evolved transforming creature."""
-        return Zoroark()
+        return Morphagon()

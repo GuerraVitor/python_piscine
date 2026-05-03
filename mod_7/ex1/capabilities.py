@@ -1,4 +1,4 @@
-"""Module defining capability interfaces for creatures."""
+"""Capability interfaces used by specialized creatures."""
 from abc import ABC, abstractmethod
 
 
@@ -8,7 +8,6 @@ class HealCapability(ABC):
     @abstractmethod
     def heal(self, target: str | None = None) -> str:
         """Perform a healing action."""
-        pass
 
 
 class TransformCapability(ABC):
@@ -17,9 +16,7 @@ class TransformCapability(ABC):
     @abstractmethod
     def transform(self) -> str:
         """Transform the creature into an alternate state."""
-        pass
 
     @abstractmethod
     def revert(self) -> str:
         """Revert the creature to its normal state."""
-        pass

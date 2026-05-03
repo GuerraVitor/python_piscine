@@ -1,4 +1,4 @@
-"""Package exposing specialized Pokémon creature factories for this variation."""
+"""Package exposing only the ex1 factories."""
 
 from .factory import HealingCreatureFactory, TransformCreatureFactory
 

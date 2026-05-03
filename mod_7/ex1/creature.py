@@ -1,85 +1,76 @@
-"""Module defining specialized creatures with unique capabilities."""
+"""Specialized creatures with healing and transform capabilities."""
 from ex0.creature import Creature
+
 from .capabilities import HealCapability, TransformCapability
 
 
-class Oddish(Creature, HealCapability):
-    """Concrete healing creature (Base form)."""
+class Sproutling(Creature, HealCapability):
+    """Base creature for the healing family."""
 
     def __init__(self) -> None:
-        """Initialize Oddish."""
-        super().__init__("Oddish", "Grass/Poison")
+        super().__init__("Sproutling", "Plant")
 
     def attack(self) -> str:
-        """Perform Oddish's attack."""
-        return "Oddish uses Absorb!"
+        return "Sproutling uses Leaf Bite!"
 
     def heal(self, target: str | None = None) -> str:
-        """Heal Oddish."""
-        return "Oddish heals itself for a small amount"
+        if target is None:
+            return "Sproutling heals itself."
+        return f"Sproutling heals {target}."
 
 
-class Vileplume(Creature, HealCapability):
-    """Concrete healing creature (Evolved form)."""
+class Bloomelle(Creature, HealCapability):
+    """Evolved creature for the healing family."""
 
     def __init__(self) -> None:
-        """Initialize Vileplume."""
-        super().__init__("Vileplume", "Grass/Poison")
+        super().__init__("Bloomelle", "Plant")
 
     def attack(self) -> str:
-        """Perform Vileplume's attack."""
-        return "Vileplume uses Petal Dance!"
+        return "Bloomelle uses Petal Burst!"
 
     def heal(self, target: str | None = None) -> str:
-        """Heal Vileplume and allies."""
-        return "Vileplume heals itself and others for a large amount"
+        if target is None:
+            return "Bloomelle heals itself and nearby allies."
+        return f"Bloomelle heals {target} and nearby allies."
 
 
-class Zorua(Creature, TransformCapability):
-    """Concrete transforming creature (Base form)."""
+class Shiftling(Creature, TransformCapability):
+    """Base creature for the transform family."""
 
     def __init__(self) -> None:
-        """Initialize Zorua."""
-        super().__init__("Zorua", "Dark")
+        super().__init__("Shiftling", "Shadow")
         self.is_transformed: bool = False
 
     def attack(self) -> str:
-        """Perform Zorua's attack based on its form."""
         if self.is_transformed:
-            return "Zorua performs a boosted illusion strike!"
-        return "Zorua attacks normally."
+            return "Shiftling uses Phantom Slash!"
+        return "Shiftling uses Shadow Tap!"
 
     def transform(self) -> str:
-        """Transform Zorua into its enhanced form (illusion)."""
         self.is_transformed = True
-        return "Zorua creates an illusion and changes its form!"
+        return "Shiftling shifts into its shadow form."
 
     def revert(self) -> str:
-        """Revert Zorua to its normal form."""
         self.is_transformed = False
-        return "Zorua's illusion fades."
+        return "Shiftling returns to its normal form."
 
 
-class Zoroark(Creature, TransformCapability):
-    """Concrete transforming creature (Evolved form)."""
+class Morphagon(Creature, TransformCapability):
+    """Evolved creature for the transform family."""
 
     def __init__(self) -> None:
-        """Initialize Zoroark."""
-        super().__init__("Zoroark", "Dark")
+        super().__init__("Morphagon", "Shadow")
         self.is_transformed: bool = False
 
     def attack(self) -> str:
-        """Perform Zoroark's attack based on its form."""
         if self.is_transformed:
-            return "Zoroark unleashes a devastating illusion strike!"
-        return "Zoroark attacks normally."
+            return "Morphagon uses Night Break!"
+        return "Morphagon uses Echo Strike!"
 
     def transform(self) -> str:
-        """Transform Zoroark into its battle illusion form."""
         self.is_transformed = True
-        return "Zoroark amplifies its illusion into a fearsome guise!"
+        return "Morphagon shifts into its battle form."
 
     def revert(self) -> str:
-        """Revert Zoroark to its stable form."""
         self.is_transformed = False
-        return "Zoroark's illusion dissipates."
+        return "Morphagon returns to its original form."
