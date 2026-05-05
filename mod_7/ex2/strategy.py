@@ -31,7 +31,7 @@ class NormalStrategy(BattleStrategy):
     def act(self, creature: Creature) -> list[str]:
         if not self.is_valid(creature):
             raise InvalidStrategyCreatureError(
-                f"Invalid Creature '{creature.name}' for normal strategy"
+                f"Invalid Creature '{creature.name}' for this normal strategy"
             )
         return [creature.attack()]
 
@@ -45,7 +45,8 @@ class AggressiveStrategy(BattleStrategy):
     def act(self, creature: Creature) -> list[str]:
         if not self.is_valid(creature):
             raise InvalidStrategyCreatureError(
-                f"Invalid Creature '{creature.name}' for aggressive strategy"
+                f"Invalid Creature '{creature.name}' "
+                "for this aggressive strategy"
             )
 
         transformed_creature = cast(TransformCapability, creature)
@@ -65,7 +66,8 @@ class DefensiveStrategy(BattleStrategy):
     def act(self, creature: Creature) -> list[str]:
         if not self.is_valid(creature):
             raise InvalidStrategyCreatureError(
-                f"Invalid Creature '{creature.name}' for defensive strategy"
+                f"Invalid Creature '{creature.name}' "
+                " for this defensive strategy"
             )
 
         healing_creature = cast(HealCapability, creature)
