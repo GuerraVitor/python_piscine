@@ -12,15 +12,18 @@ def test_factory(factory: CreatureFactory) -> None:
     print(base_creature.attack())
     print(evolved_creature.describe())
     print(evolved_creature.attack())
+    print()
 
 
-def test_battle(first_factory: CreatureFactory, second_factory: CreatureFactory) -> None:
+def test_battle(first_factory: CreatureFactory,
+                second_factory: CreatureFactory) -> None:
     """Make the base creatures from two factories fight."""
     print("Testing battle")
     first_creature = first_factory.create_base()
     second_creature = second_factory.create_base()
 
-    print(f"{first_creature.describe()}\nvs.\n{second_creature.describe()}\nfight!")
+    print(f"{first_creature.describe()}\nvs.\n{second_creature.describe()}")
+    print("fight!")
     print(first_creature.attack())
     print(second_creature.attack())
 
