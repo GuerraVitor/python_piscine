@@ -15,8 +15,8 @@ def test_factory(factory: CreatureFactory) -> None:
     print()
 
 
-def test_battle(first_factory: CreatureFactory,
-                second_factory: CreatureFactory) -> None:
+def test_battle(first_factory: FlameFactory,
+                second_factory: AquaFactory) -> None:
     """Make the base creatures from two factories fight."""
     print("Testing battle")
     first_creature = first_factory.create_base()
