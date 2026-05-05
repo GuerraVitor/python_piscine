@@ -13,6 +13,8 @@ class HealCapability(ABC):
 class TransformCapability(ABC):
     """Abstract interface for creatures that can transform."""
 
+    is_transformed: bool
+
     @abstractmethod
     def transform(self) -> str:
         """Transform the creature into an alternate state."""

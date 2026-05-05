@@ -8,14 +8,14 @@ def test_healing() -> None:
     print("Testing Creature with healing capability")
     factory = HealingCreatureFactory()
 
-    print("base:")
+    print(" base:")
     base = factory.create_base()
     print(base.describe())
     print(base.attack())
     if isinstance(base, HealCapability):
         print(base.heal())
 
-    print("evolved:")
+    print(" evolved:")
     evolved = factory.create_evolved()
     print(evolved.describe())
     print(evolved.attack())
@@ -28,7 +28,7 @@ def test_transform() -> None:
     print("\nTesting Creature with transform capability")
     factory = TransformCreatureFactory()
 
-    print("base:")
+    print(" base:")
     base = factory.create_base()
     print(base.describe())
     print(base.attack())
@@ -37,7 +37,7 @@ def test_transform() -> None:
         print(base.attack())
         print(base.revert())
 
-    print("evolved:")
+    print(" evolved:")
     evolved = factory.create_evolved()
     print(evolved.describe())
     print(evolved.attack())
