@@ -3,3 +3,7 @@
 
 #Subjects
 *.pdf
+
+#cache
+*/.*
+*/__*
